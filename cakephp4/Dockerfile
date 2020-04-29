@@ -99,7 +99,6 @@ RUN echo "%${GROUP} ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/${GROUP}
 RUN usermod -aG $GROUP $USER
 
 ADD ./files/supervisord.conf /etc/supervisor/supervisord.conf
-ADD ./files/info.php /srv/httpd/webroot
 
 # RUN echo "========== ポートを開けておく. =========="
 EXPOSE 80 22
