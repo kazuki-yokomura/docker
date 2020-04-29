@@ -11,6 +11,8 @@ services:
       - "2022:22"
     links:
       - mysql82
+    volumes:
+      - ./src:/srv/httpd
 
   mysql82:
     image: mysql:8.0.20

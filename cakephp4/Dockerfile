@@ -84,11 +84,6 @@ RUN sed -ri -e "s!/var/www/!${DOCUMENT_ROOT}!g" /etc/apache2/apache2.conf /etc/a
 # RUN echo "========== 最新の composer インストール(Docker イメージに依存) =========="
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# RUN echo "========== 最新の CakePHP4 インストール =========="
-RUN composer create-project --prefer-dist cakephp/app:4.* /srv/httpd/
-
-# COPY src/ $DOCUMENT_ROOT
-
 # RUN echo "========== ssh 接続をできるようにする. =========="
 RUN mkdir /var/run/sshd
 
