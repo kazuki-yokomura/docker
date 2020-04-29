@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  cake4:
+    build: ./cakephp4
+    image: php:7.3-apache
+    container_name: cakephp4
+    restart: always
+    ports:
+      - "8080:80"
+      - "2022:22"
+    links:
+      - mysql82
+
+  mysql82:
+    image: mysql:8.0.20
+    container_name: mysql82
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: dockuser
+      MYSQL_PASSWORD: dockuser
