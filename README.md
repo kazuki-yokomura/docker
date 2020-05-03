@@ -1,9 +1,14 @@
 # docker
 
-立ち上げる
+カスタムイメージを作る
 ```
 docker-compose build
-docker-compose up -d
+```
+
+負荷分散状態で、コンテナを起動
+```
+docker swarm init
+docker stack deploy -c docker-compose.yml cake-sample
 ```
 
 mysql と SmtpTransport の設定を変更する
