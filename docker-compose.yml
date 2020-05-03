@@ -25,5 +25,6 @@ services:
 
   mailhog:
     image: mailhog/mailhog
+    container_name: cake4-mailhog
     ports:
       - "1080:8025"
