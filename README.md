@@ -1,5 +1,11 @@
 # docker
 
+git から clone, zip でダウンロードしてきた場合は必要なディレクトリがないので作る
+```
+mkdir ./mysql/data
+mkdir ./src
+```
+
 カスタムイメージを作る
 ```
 docker-compose build
