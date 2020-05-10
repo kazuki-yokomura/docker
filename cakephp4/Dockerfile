@@ -72,7 +72,11 @@ RUN echo cp /usr/share/zoneinfo/Japan /etc/localtime
 
 # ドキュメントルートの変更.(特に必須ではない)
 RUN sed -ri -e "s!/var/www/html!${DOCUMENT_ROOT}!g" /etc/apache2/sites-available/*.conf \
- && sed -ri -e "s!/var/www/!${DOCUMENT_ROOT}!g" /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+ && sed -ri -e "s!/var/www/!${DOCUMENT_ROOT}!g" /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
+ && sed -ri -e "172 s/None/All/g" /etc/apache2/apache2.conf
+
+# mod_rewrite 有効化
+RUN a2enmod rewrite
 
 # 最新の composer インストール(Docker イメージに依存。).
 # こんな感じで他のイメージからデータをとってこれることを、マルチステージビルドと言う.
