@@ -67,6 +67,13 @@ RUN docker-php-ext-configure gd \
     && pecl install mcrypt \
         mysql
 
+# mailhog 用 mhsendmail インストール
+RUN curl -sSL https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64 -o mhsendmail \
+    && chmod +x mhsendmail \
+    && mv mhsendmail /usr/local/bin/mhsendmail
+
+COPY ./php.ini /usr/local/etc/php/php.ini 
+
 # タイムゾーン設定.
 RUN echo cp /usr/share/zoneinfo/Japan /etc/localtime
 
